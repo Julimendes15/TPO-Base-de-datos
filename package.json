@@ -1,0 +1,26 @@
+{
+  "name": "tpo-base-de-datos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=5173 --open=index.html",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julimendes15/TPO-Base-de-datos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Julimendes15/TPO-Base-de-datos/issues"
+  },
+  "homepage": "https://github.com/Julimendes15/TPO-Base-de-datos#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "nodemon": "^3.1.10"
+  }
+}
