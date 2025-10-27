@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madera&Co — Muebles de madera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script defer src="assets/js/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="assets/js/charts.js"></script>
+  </head>
+  <body>
+    <header class="nav">
+  <a class="brand" href="index.html">Madera<span>&</span>Co</a>
+  <nav>
+    <a href="index.html" data-nav="home">Inicio</a>
+    <a href="catalog.html" data-nav="catalog">Catálogo</a>
+    <a href="analytics.html" data-nav="analytics">Análisis</a>
+    <a href="suppliers.html" data-nav="suppliers">Proveedores</a>
+    <a href="cart.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+  </nav>
+</header>
+
+    <main class="wrap">
+      <h1>Panel de ventas</h1>
+      <p class="muted">Todos los gráficos pueden consumir datos desde <code>/api/sales</code>, <code>/api/top-products</code> y <code>/api/revenue</code>.</p>
+
+      <div class="cards charts">
+        <article class="card">
+          <h3>Ventas por mes</h3>
+          <canvas id="salesByMonth"></canvas>
+        </article>
+        <article class="card">
+          <h3>Productos más vendidos</h3>
+          <canvas id="topProducts"></canvas>
+        </article>
+        <article class="card">
+          <h3>Ingresos por categoría</h3>
+          <canvas id="revenueByCategory"></canvas>
+        </article>
+      </div>
+    </main>
+    <footer class="footer">
+  <div class="wrap">
+    <p>© <span id="year"></span> Madera&Co. Todos los derechos reservados.</p>
+    <p class="muted">Hecho con amor por artesanos de la madera.</p>
+  </div>
+</footer>
+
+  </body>
+</html>
