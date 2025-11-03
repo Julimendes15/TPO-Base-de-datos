@@ -1,3 +1,7 @@
+USE CC_CARPINTERÍA_DEL_SUR;
+
+GO
+
 /* 
 Consulta de costos de materiales más utilizados.
 La idea es saber cuánto dinero representan los materiales en producción, tomando siempre el costo más barato disponible para cada material entre todos los proveedores.
@@ -409,3 +413,6 @@ FROM Pedido p
 JOIN Cliente c 
     ON c.id_cliente = p.id_cliente
 ORDER BY p.fecha DESC;
+
+
+SELECT * FROM DetalleFabricacion
