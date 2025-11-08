@@ -1,3 +1,7 @@
+USE CC_CARPINTERlA_DEL_SUR;
+
+GO
+
 CREATE TRIGGER trg_actualizar_totales_pedido
 ON DetallePedido
 AFTER INSERT, UPDATE, DELETE

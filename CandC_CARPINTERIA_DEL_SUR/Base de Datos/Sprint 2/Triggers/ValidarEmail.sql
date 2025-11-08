@@ -1,3 +1,7 @@
+USE CC_CARPINTERlA_DEL_SUR;
+
+GO
+
 CREATE TRIGGER trg_validar_email_cliente
 ON Cliente
 INSTEAD OF INSERT
