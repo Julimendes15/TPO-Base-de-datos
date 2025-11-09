@@ -1,4 +1,4 @@
-﻿USE CC_CARPINTERlA_DEL_SUR;
+﻿USE CC_CARPINTERIA_DEL_SUR;
 GO
 
 /* ===========================
@@ -255,4 +255,10 @@ INSERT INTO DetalleCompra (cantidad, costo_unitario, subtotal, id_orden_compra, 
 -- OC 5 (prov 5: Mayorista Insumos) → material 3
 INSERT INTO DetalleCompra (cantidad, costo_unitario, subtotal, id_orden_compra, id_material) VALUES
 (300,   80.00, 24000.00, 5, 3);
+GO
+
+
+-- PRUEBAS DE TRIGGERS
+INSERT INTO Cliente (tipo, nombre, apellido, razon_social, doc_tipo, doc_numero, telefono, email)
+VALUES ('Empresa', 'Laura', 'Gómez', 'Muebles Gómez SRL', 'CUIT', '30-12345678-9', '1144556677', 'contactomueblesgomez@random.com')
 GO
