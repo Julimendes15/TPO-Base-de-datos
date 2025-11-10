@@ -221,7 +221,6 @@ INSERT INTO Factura (fecha, tipo, punto_venta, numero, total, estado, id_pedido)
 ('2025-10-25', 'B', '0001', '00000002',  45000, 'Emitida', 5),
 ('2025-10-29', 'C', '0001', '00000003', 140000, 'Emitida', 9);
 GO
--- (Respetan uq_factura_pedido y uq_factura_fiscal)
 
 -- 5 órdenes de compra
 INSERT INTO OrdenCompra (fecha, estado, total, id_proveedor) VALUES

@@ -100,7 +100,6 @@ JOIN (
     ON pm.id_material = m.id_material;
 
 
-
 /*
 Consulta de estadísticas generales de ventas.
 Se mide:
@@ -244,8 +243,7 @@ SELECT
 
     (p.precio_venta - p.costo_produccion) AS margen_unitario
 FROM Producto p
-ORDER BY costo_materiales_por_unidad DESC;
-
+ORDER BY costo_materiales_por_unidad DESC;	
 
 
 /*

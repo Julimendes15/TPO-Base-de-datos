@@ -1,4 +1,4 @@
-CREATE DATABASE CC_CARPINTERIA_DEL_SUR
+﻿CREATE DATABASE CC_CARPINTERIA_DEL_SUR
 
 USE CC_CARPINTERIA_DEL_SUR;
 GO
@@ -15,13 +15,7 @@ CREATE TABLE Cliente (
     telefono NVARCHAR(50) NOT NULL,
     email NVARCHAR(100) NOT NULL,
     fecha_alta DATE NOT NULL DEFAULT GETDATE(),
-    activo BIT NOT NULL DEFAULT 1,
-    CONSTRAINT ck_cliente_email
-        CHECK (
-            email LIKE '%@gmail.com%' 
-            OR email LIKE '%@outlook.com%' 
-            OR email LIKE '%@yahoo.com%'
-        )
+    activo BIT NOT NULL DEFAULT 1
 );
 GO
 
@@ -195,4 +189,49 @@ CREATE TABLE ProveedorMaterial (
         FOREIGN KEY (id_material) REFERENCES Material(id_material)
 );
 GO
+
+-- SEGURIDAD
+-- Rol de solo lectura
+CREATE ROLE Lector;
+GRANT SELECT ON SCHEMA :: dbo TO Lector;
+
+-- Rol de administración
+CREATE ROLE Administrador;
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: dbo TO Administrador;
+
+-- Crear usuarios locales dentro de SQL Server
+CREATE LOGIN usuario_lectura WITH PASSWORD = '12345';
+CREATE USER usuario_lectura FOR LOGIN usuario_lectura;
+
+CREATE LOGIN usuario_admin WITH PASSWORD = 'admin123';
+CREATE USER usuario_admin FOR LOGIN usuario_admin;
+
+-- Asignar roles a esos usuarios
+EXEC sp_addrolemember 'Lector', 'usuario_lectura';
+EXEC sp_addrolemember 'Administrador', 'usuario_admin';
+
+
+-- ¿Existen los roles y usuarios en la base?
+SELECT name, type_desc
+FROM sys.database_principals
+WHERE name IN ('Lector','Administrador','usuario_lectura','usuario_admin');
+
+-- ¿Quiénes son miembros de cada rol?
+EXEC sp_helprolemember 'Lector';
+EXEC sp_helprolemember 'Administrador';
+
+
+-- Simular usuario de solo lectura
+EXECUTE AS USER = 'usuario_lectura';
+SELECT TOP 5 * FROM dbo.Producto;     
+DELETE FROM Producto WHERE 1 = 0;   
+REVERT;                                  
+
+-- Simular usuario admin
+EXECUTE AS USER = 'usuario_admin';
+INSERT INTO Cliente (tipo, nombre, apellido, razon_social, doc_tipo, doc_numero, telefono, email)
+VALUES ('Particular', 'Juan', 'Pérez', 'Pérez Juan', 'DNI', '30111222', '1122334455', 'juanp@gmail.com');  
+REVERT;
+
+SELECT * FROM Cliente;
 
