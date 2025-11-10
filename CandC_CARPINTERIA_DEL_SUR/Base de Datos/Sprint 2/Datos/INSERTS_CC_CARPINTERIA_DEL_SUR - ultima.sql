@@ -258,6 +258,24 @@ GO
 
 
 -- PRUEBAS DE TRIGGERS
+
+-- TRIGGER: Validar email
 INSERT INTO Cliente (tipo, nombre, apellido, razon_social, doc_tipo, doc_numero, telefono, email)
 VALUES ('Empresa', 'Laura', 'Gómez', 'Muebles Gómez SRL', 'CUIT', '30-12345678-9', '1144556677', 'contactomueblesgomez@random.com')
 GO
+
+-- TRIGGER: Actualizar pedidos totales
+SELECT id_pedido, total_bruto, total_neto, descuento_total
+FROM dbo.Pedido
+WHERE id_pedido = 1;  -- usa un id existente
+
+-- ajustá columnas reales de DetallePedido
+INSERT INTO dbo.DetallePedido (id_pedido, id_producto, cantidad, precio_unitario, subtotal, descuento)
+VALUES (1, 1, 2, 1000, 2000, 100);
+
+SELECT id_pedido, total_bruto, total_neto, descuento_total
+FROM dbo.Pedido
+WHERE id_pedido = 1;
+GO
+
+
